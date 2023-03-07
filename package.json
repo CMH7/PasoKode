@@ -9,7 +9,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"format": "prettier --plugin-search-dir . --write .",
+		"start": "node build/index.js"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
@@ -32,6 +33,7 @@
 	"dependencies": {
 		"@mdi/js": "^7.1.96",
 		"@prisma/client": "^4.11.0",
+		"@sveltejs/adapter-node": "^1.0.0-next.106",
 		"svelte-qrcode": "^1.0.0"
 	}
 }
