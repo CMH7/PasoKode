@@ -5,7 +5,7 @@
 	import PasokButton from "$lib/components/PasokButton.svelte";
 	import PasokIcon from "$lib/components/PasokIcon.svelte";
   import { mdiLogout } from '@mdi/js'
-  import QrCode from 'svelte-qrCode'
+  import QrCode from 'svelte-qrcode'
 
   /**
    * @type {import('./$types').PageServerData}
