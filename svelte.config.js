@@ -8,6 +8,11 @@ const config = {
 		adapter: node(),
 		csrf: {
 			checkOrigin: false
+		},
+		vite: {
+			optimizeDeps: {
+				include: ['svelte-qrCode']
+			}
 		}
 	},
 	preprocess: vitePreprocess()
