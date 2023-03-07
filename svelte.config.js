@@ -15,7 +15,10 @@ const config = {
 			}
 		}
 	},
-	preprocess: vitePreprocess()
+	preprocess: vitePreprocess(),
+	typescript: {
+		tsconfigFile: './tsconfig.json'
+	}
 };
 
 export default config;
