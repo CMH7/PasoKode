@@ -15,7 +15,7 @@
   
   <select {disabled} bind:value class="w-[{width}] h-[37px] rounded-lg lexend text-xs">
     {#each data as d}
-      <option>{d}</option>
+      <option value='{d}'>{d}</option>
     {/each}
   </select>
 </div>

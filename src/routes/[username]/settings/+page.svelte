@@ -2,6 +2,9 @@
   import { page } from '$app/stores'
   import SelectField from "$lib/components/SelectField.svelte";
 	import PasokButton from "$lib/components/PasokButton.svelte";
+	import PasokIcon from '$lib/components/PasokIcon.svelte';
+	import { mdiBackburger, mdiChevronLeft, mdiHome, mdiLogout } from '@mdi/js';
+	import { onMount } from 'svelte';
 
   const sex = ['Male', 'Female']
   const strands = ['STEM', 'ABM']
@@ -9,18 +12,24 @@
   const sectionsOf11 = ['Orion', 'Leo', 'Morgan', 'Wedgwood']
   const sectionsOf12 = ['Da Vinci', 'Rembrandt', 'Beethoven', 'Mozart']
 
-  let selectedGrade = '11'
+  /**
+   * @type {import('./$types').PageServerData}
+   */
+  export let data
 
-  $: selectedSection = selectedGrade === '11' ? sectionsOf11[0] : sectionsOf12[0]
-
-  let userData = {
-    firstName: 'Charles Maverick',
-    middleName: '',
-    LastName: 'Herrera',
-    strand: 'STEM',
-    year: '12',
-    section: 'Mozart'
+  $: student = {
+    firstName: data.student?.firstName,
+    middleName: data.student?.middleName,
+    LastName: data.student?.lastName,
+    strand: data.student?.strand,
+    year: `${data.student?.year}`,
+    section: data.student?.section,
+    sex: data.student?.sex
   }
+
+  onMount(async () => {
+    console.log(student)
+  })
 </script>
 
 <svelte:head>
@@ -29,14 +38,26 @@
 
 <div class="w-full h-full flex flex-col items-center gap-y-5">
   <!-- header logo -->
-  <div class="w-full flex justify-center items-center pt-3 gap-x-3">
-    <!-- logo -->
-    <div class="rounded-full w-[42px] aspect-square bg-primary" />
-
-    <!-- title  -->
-    <div class="fredoka font-bold text-paleBlue text-[16px]">
-      PasoKode
+  <!-- headers -->
+  <div class="w-full flex items-center justify-between pt-3 px-3">
+    <div class="w-[128px] flex items-center gap-x-3">
+      <!-- logo -->
+      <div class="rounded-full w-[42px] aspect-square bg-primary" />
+  
+      <!-- title  -->
+      <div class="fredoka font-bold text-paleBlue text-[16px]">
+        PasoKode
+      </div>
     </div>
+
+    <a href="/{data.student?.username}">
+      <div class="flex items-center gap-x-1">
+        <PasokIcon size={20} path={mdiChevronLeft} />
+        <div class="lexend text-xs">
+          Back
+        </div>
+      </div>
+    </a>
   </div>
 
   <!-- headings -->
@@ -57,7 +78,7 @@
           First Name
         </div>
         
-        <input bind:value={userData.firstName} readonly class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
+        <input bind:value={student.firstName} readonly class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
       </div>
 
       <div class="w-[135px] flex flex-col">
@@ -66,7 +87,7 @@
           Middle Name
         </div>
         
-        <input bind:value={userData.middleName} readonly class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
+        <input bind:value={student.middleName} readonly class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
       </div>
     </div>
     
@@ -78,10 +99,10 @@
           Last Name
         </div>
         
-        <input bind:value={userData.LastName} readonly class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
+        <input bind:value={student.LastName} readonly class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
       </div>
 
-      <SelectField disabled={true} width='135px' data={['Male', 'Female']}>
+      <SelectField disabled={true} width='135px' bind:value={student.sex} data={sex}>
         <div class="lexend text-[12px]">
           Sex
         </div>
@@ -90,7 +111,7 @@
 
     <!-- strands -->
     <div class="w-full">
-      <SelectField disabled={true} data={strands}>
+      <SelectField bind:value={student.strand} disabled={true} data={strands}>
         <div class="lexend text-[12px]">
           Strands
         </div>
@@ -99,13 +120,13 @@
 
     <!-- Year & Section -->
     <div class="flex items-center gap-x-2">
-      <SelectField disabled={true} bind:value={selectedGrade} width='135px' data={grade}>
+      <SelectField disabled={true} bind:value={student.year} width='135px' data={grade}>
         <div class="lexend text-[12px]">
           Year
         </div>
       </SelectField>
       
-      <SelectField disabled={true} bind:value={selectedSection} width='135px' data={selectedGrade === '11' ? sectionsOf11 : sectionsOf12}>
+      <SelectField disabled={true} bind:value={student.section} width='135px' data={student.year === '11' ? sectionsOf11 : sectionsOf12}>
         <div class="lexend text-[12px]">
           Section
         </div>

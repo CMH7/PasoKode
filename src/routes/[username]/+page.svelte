@@ -7,17 +7,29 @@
   import { mdiLogout } from '@mdi/js'
   import QrCode from 'svelte-qrCode'
 
-  let fn = 'Charles Maverick'
-  let mn = ''
-  let ln = 'Herrera'
-  let strand = 'STEM'
-  let grade = '11'
-  let section = 'Da Vinci'
+  /**
+   * @type {import('./$types').PageServerData}
+   */
+  export let data
+
+  function downloadimage() {
+    let pic = document.getElementById("pic")
+    html2canvas(pic, { allowTaint: true }).then(function (canvas) {
+
+    var link = document.createElement("a")
+    document.body.appendChild(link);
+    link.download = `${data.student.firstName} ${data.student.middleName.charAt(0)} ${data.student.lastName} PasoKode QR.jpg`
+    link.href = canvas.toDataURL()
+    link.target = '_blank'
+    link.click()
+    });
+  }
 
 </script>
 
 <svelte:head>
   <title>{$page.params.username} | QR Code</title>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 </svelte:head>
 
 <div class="w-full h-full flex flex-col items-center justify-between pb-10">
@@ -45,20 +57,20 @@
     </a>
   </div>
 
-  <div class="w-full flex flex-col items-center">
+  <div id='pic' class="w-full flex flex-col items-center">
     <!-- QR CODE -->
     <div class="w-[282px] aspect-square bg-black shadow-lg">
-      <QrCode size={282} value="asdf" />
+      <QrCode size={282} value="{data.student.firstName}{data.student.middleName}{data.student.lastName}{data.student.strand}{data.student.year}{data.student.section}" />
     </div>
 
     <!-- full name -->
     <div class="fredoka font-semibold text-[20px] mt-2">
-      {fn} {mn} {ln}
+      {data.student.firstName} {data.student.middleName !== '' ? `${data.student.middleName.charAt(0)}.` : ''} {data.student.lastName}
     </div>
 
     <!-- strand year and section -->
-    <div class="fredoka font-semibold text-[18px]">
-      {strand} {grade} - {section}
+    <div class="fredoka font-semibold text-[18px] mb-3">
+      {data.student.strand} {data.student.year} - {data.student.section}
     </div>
   </div>
 
@@ -69,10 +81,10 @@
       </PasokButton>
     </a>
     
-    <a href="/cmh/settings">
+    <button on:click={downloadimage}>
       <PasokButton v={3}>
         Download QR
       </PasokButton>
-    </a>
+    </button>
   </div>
 </div>

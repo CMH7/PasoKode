@@ -2,6 +2,15 @@
   import { page } from '$app/stores'
   import SelectField from "$lib/components/SelectField.svelte";
 	import PasokButton from "$lib/components/PasokButton.svelte";
+	import { applyAction, deserialize, enhance } from '$app/forms';
+	import { goto, invalidateAll } from '$app/navigation';
+
+  /**
+   * @type {import('./$types').PageServerData}
+   */
+  export let data
+
+  let updatingData = false
 
   const sex = ['Male', 'Female']
   const strands = ['STEM', 'ABM']
@@ -9,22 +18,74 @@
   const sectionsOf11 = ['Orion', 'Leo', 'Morgan', 'Wedgwood']
   const sectionsOf12 = ['Da Vinci', 'Rembrandt', 'Beethoven', 'Mozart']
 
-  let selectedGrade = '11'
+  let studentID = data.student?.id
+  $: selectedyear = `${data.student?.year}`
+  let student = {
+    firstName: data.student?.firstName,
+    middleName: data.student?.middleName,
+    lastName: data.student?.lastName,
+    strand: data.student?.strand,
+    year: `${data.student?.year}`,
+    section: data.student?.section,
+    sex: data.student?.sex
+  }
 
-  $: selectedSection = selectedGrade === '11' ? sectionsOf11[0] : sectionsOf12[0]
-  $: userData = {
-    firstName: 'Charles Maverick',
-    middleName: '',
-    lastName: 'Herrera',
-    strand: 'STEM',
-    year: '12',
-    section: 'Leo'
+  const updateData = async () => {
+    console.log(student)
+    if (updatingData) return
+    updatingData = true
+
+    if(student.firstName === '' || student.lastName === '') {
+
+    }
+    
+    let form = document.getElementById('formUpdateData')
+    // @ts-ignore
+    const data = new FormData(form);
+
+    // @ts-ignore
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: data
+    });
+
+    /** @type {import('@sveltejs/kit').ActionResult} */
+    const result = deserialize(await response.text());
+
+    if (result.type === 'redirect') {
+      await goto(`/login`)
+    }
+
+    if (result.type === 'success') {
+      // re-run all `load` functions, following the successful update
+      await invalidateAll();
+    }
+
+    applyAction(result);
+    updatingData = false
   }
 </script>
 
 <svelte:head>
   <title>{$page.params.username} | Edit data</title>
 </svelte:head>
+
+<form
+  id='formUpdateData'
+  class="hidden"
+  action="?/updateData"
+  method="post"
+  use:enhance
+>
+  <input name='id' type="text" bind:value={studentID}>
+  <input name='fn' type="text" bind:value={student.firstName}>
+  <input name='mn' type="text" bind:value={student.middleName}>
+  <input name='ln' type="text" bind:value={student.lastName}>
+  <input name='sex' type="text" bind:value={student.sex}>
+  <input name='strand' type="text" bind:value={student.strand}>
+  <input name='year' type="text" bind:value={student.year}>
+  <input name='section' type="text" bind:value={student.section}>
+</form>
 
 <div class="w-full h-full flex flex-col items-center gap-y-5">
   <!-- header logo -->
@@ -56,7 +117,7 @@
           First Name
         </div>
         
-        <input bind:value={userData.firstName} class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
+        <input bind:value={student.firstName} class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
       </div>
 
       <div class="w-[135px] flex flex-col">
@@ -65,7 +126,7 @@
           Middle Name
         </div>
         
-        <input bind:value={userData.middleName} class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
+        <input bind:value={student.middleName} class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
       </div>
     </div>
     
@@ -77,10 +138,10 @@
           Last Name
         </div>
         
-        <input bind:value={userData.lastName} class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
+        <input bind:value={student.lastName} class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
       </div>
 
-      <SelectField width='135px' data={['Male', 'Female']}>
+      <SelectField bind:value={student.sex} width='135px' data={['Male', 'Female']}>
         <div class="lexend text-[12px]">
           Sex
         </div>
@@ -89,7 +150,7 @@
 
     <!-- strands -->
     <div class="w-full">
-      <SelectField data={strands}>
+      <SelectField bind:value={student.strand} data={strands}>
         <div class="lexend text-[12px]">
           Strands
         </div>
@@ -98,13 +159,13 @@
 
     <!-- Year & Section -->
     <div class="flex items-center gap-x-2">
-      <SelectField bind:value={userData.year} width='135px' data={grade}>
+      <SelectField bind:value={student.year} width='135px' data={grade}>
         <div class="lexend text-[12px]">
           Year
         </div>
       </SelectField>
       
-      <SelectField bind:value={userData.section} width='135px' data={selectedGrade === '11' ? sectionsOf11 : sectionsOf12}>
+      <SelectField bind:value={student.section} width='135px' data={selectedyear === '11' ? sectionsOf11 : sectionsOf12}>
         <div class="lexend text-[12px]">
           Section
         </div>
@@ -114,16 +175,22 @@
 
   <!-- ctas btn -->
   <div class="w-full flex flex-col justify-center items-center gap-y-2 mt-20">
-    <a href="/{$page.params.username}/settings">
+    <button on:click={updateData}>
       <PasokButton>
-        SAVE
+        {#if !updatingData}
+          SAVE
+        {:else}
+          SAVING...
+        {/if}
       </PasokButton>
-    </a>
+    </button>
     
-    <a href="/{$page.params.username}/settings">
-      <PasokButton v={4}>
-        CANCEL
-      </PasokButton>
-    </a>
+    {#if !updatingData}
+      <a href="/{$page.params.username}/settings">
+        <PasokButton v={4}>
+          CANCEL
+        </PasokButton>
+      </a>
+    {/if}
   </div>
 </div>
