@@ -3,8 +3,7 @@
   import SelectField from "$lib/components/SelectField.svelte";
 	import PasokButton from "$lib/components/PasokButton.svelte";
 	import PasokIcon from '$lib/components/PasokIcon.svelte';
-	import { mdiBackburger, mdiChevronLeft, mdiHome, mdiLogout } from '@mdi/js';
-	import { onMount } from 'svelte';
+	import {mdiChevronLeft } from '@mdi/js';
 
   const sex = ['Male', 'Female']
   const strands = ['STEM', 'ABM']
@@ -26,10 +25,6 @@
     section: data.student?.section,
     sex: data.student?.sex
   }
-
-  onMount(async () => {
-    console.log(student)
-  })
 </script>
 
 <svelte:head>

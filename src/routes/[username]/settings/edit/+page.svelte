@@ -31,7 +31,6 @@
   }
 
   const updateData = async () => {
-    console.log(student)
     if (updatingData) return
     updatingData = true
 
