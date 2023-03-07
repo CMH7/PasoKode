@@ -1,0 +1,9 @@
+{
+  "extends": "@sveltejs/kit/typescript-config",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["src/*"]
+    }
+  }
+}
