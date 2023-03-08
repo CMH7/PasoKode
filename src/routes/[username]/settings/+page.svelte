@@ -35,15 +35,17 @@
   <!-- header logo -->
   <!-- headers -->
   <div class="w-full flex items-center justify-between pt-3 px-3">
-    <div class="w-[128px] flex items-center gap-x-3">
-      <!-- logo -->
-      <div class="rounded-full w-[42px] aspect-square bg-primary" />
-  
-      <!-- title  -->
-      <div class="fredoka font-bold text-paleBlue text-[16px]">
-        PasoKode
+    <a href="/{$page.params.username}">
+      <div class="w-[128px] flex items-center gap-x-3">
+        <!-- logo -->
+        <div class="rounded-full w-[42px] aspect-square bg-primary" />
+    
+        <!-- title  -->
+        <div class="fredoka font-bold text-paleBlue text-[16px]">
+          PasoKode
+        </div>
       </div>
-    </div>
+    </a>
 
     <a href="/{data.student?.username}">
       <div class="flex items-center gap-x-1">
