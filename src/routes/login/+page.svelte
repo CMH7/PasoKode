@@ -18,6 +18,7 @@
     pWordErr = false
 
     if (loggingIn) return
+    loggingIn = true
 
     if(uName === '') {
       uNameErr = true
@@ -156,8 +157,11 @@
         LOGGING IN...
       {/if}
     </PasokButton>
-    <div class="w-full flex justify-center items-center lexend text-[10px]">
-      No account? <a href="/signup"><span class="ml-1 text-paleBlue">Register here</span></a>
-    </div>
+
+    {#if !loggingIn}
+      <div class="w-full flex justify-center items-center lexend text-[10px]">
+        No account? <a href="/signup"><span class="ml-1 text-paleBlue">Register here</span></a>
+      </div>
+    {/if}
   </div>
 </div>

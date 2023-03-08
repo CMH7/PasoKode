@@ -60,7 +60,7 @@
   <div id='pic' class="w-full flex flex-col items-center">
     <!-- QR CODE -->
     <div class="w-[282px] aspect-square bg-black shadow-lg">
-      <QrCode size={282} value="{data.student.firstName}{data.student.middleName}{data.student.lastName}{data.student.strand}{data.student.year} - {data.student.section}" />
+      <QrCode size={282} value="{data.student.firstName},{data.student.middleName},{data.student.lastName},{data.student.strand}{data.student.year} - {data.student.section}" />
     </div>
 
     <!-- full name -->

@@ -40,6 +40,7 @@
     nP1ErrMsg = ''
     nP2Err = false
     nP2ErrMsg = ''
+
     if (registering) return
     registering = true
 
@@ -280,7 +281,11 @@
         {#if step == 1}
           Next
         {:else}
-          Register
+          {#if !registering}
+            Register
+          {:else}
+            Registering...
+          {/if}  
         {/if}
       </PasokButton>
     </button>
