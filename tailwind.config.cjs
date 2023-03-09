@@ -4,10 +4,10 @@ module.exports = {
 	theme: {
     extend: {
       backgroundImage: {
-        "pasoKodeLogo": "url('favicon.png')",
-        "pasoKodeLogoNoBg": "url('PasoKode noBG.png')",
-        "pasoKodeTitle": "url('pasoKodeTitle.png')",
-        "pasoKodeBanner": "url('PasokodeBanner.png')"
+        "pasoKodeLogo": "url('/favicon.png')",
+        "pasoKodeLogoNoBg": "url('/PasoKode noBG.png')",
+        "pasoKodeTitle": "url('/pasoKodeTitle.png')",
+        "pasoKodeBanner": "url('/PasokodeBanner.png')"
       },
       colors: {
         'skyBlue': "#53CBFF",
