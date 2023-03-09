@@ -174,7 +174,7 @@
 
   <!-- ctas btn -->
   <div class="w-full flex flex-col justify-center items-center gap-y-2 mt-20">
-    <button on:click={updateData}>
+    <button disabled={updatingData} on:click={updateData}>
       <PasokButton>
         {#if !updatingData}
           SAVE

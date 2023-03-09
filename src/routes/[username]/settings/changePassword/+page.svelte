@@ -153,7 +153,7 @@
   </div>
 
   <div class="w-full flex flex-col justify-center items-center gap-y-2 mt-20">
-    <button on:click={changePass}>
+    <button disabled={changingPass} on:click={changePass}>
       <PasokButton>
         {#if !changingPass}
           SAVE

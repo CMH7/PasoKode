@@ -268,7 +268,7 @@
 
   <!-- next btn -->
   <div class="w-full flex flex-col items-center gap-y-2 mt-20">
-    <button on:click={() => {
+    <button disabled={registering} on:click={() => {
       if(step == 1) {
         step = 2
         return
@@ -290,11 +290,13 @@
       </PasokButton>
     </button>
     {#if step == 2}
-      <button on:click={() => {step = 1}}>
-        <PasokButton v={3}>
-          Back
-        </PasokButton>
-      </button>
+      {#if !registering}
+        <button on:click={() => {step = 1}}>
+          <PasokButton v={3}>
+            Back
+          </PasokButton>
+        </button>
+      {/if}
     {/if}
   </div>
 </div>
