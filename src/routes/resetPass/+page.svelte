@@ -76,18 +76,13 @@
 <div class="w-full h-full flex flex-col items-center gap-y-5">
   <div class="w-full flex justify-center items-center pt-3 gap-3">
     <!-- logo -->
-    <div class="rounded-full w-[42px] aspect-square bg-primary" />
-
-    <!-- title  -->
-    <div class="fredoka font-bold text-paleBlue text-[16px]">
-      PasoKode
-    </div>
+    <div class="bg-pasoKodeBanner bg-[length:150px_75px] w-[150px] h-[75px] flex-shrink-0" />
   </div>
 
   <!-- headings -->
   <div class="w-full flex justify-center items-center mt-16">
     <div class="text-[32px] font-bold fredoka">
-      RESET
+      FIND ACCOUNT
     </div>
   </div>
 
@@ -105,7 +100,7 @@
     {/if}
   </div>
 
-  <div>
+  <div class="mt-5">
     <PasokButton onClick={find}>
       {#if !finding}
         Find user

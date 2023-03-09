@@ -38,12 +38,7 @@
     <a href="/{$page.params.username}">
       <div class="w-[128px] flex items-center gap-x-3">
         <!-- logo -->
-        <div class="rounded-full w-[42px] aspect-square bg-primary" />
-    
-        <!-- title  -->
-        <div class="fredoka font-bold text-paleBlue text-[16px]">
-          PasoKode
-        </div>
+        <div class="bg-pasoKodeBanner bg-[length:150px_75px] w-[150px] h-[75px] flex-shrink-0" />
       </div>
     </a>
 
@@ -58,7 +53,7 @@
   </div>
 
   <!-- headings -->
-  <div class="w-full flex justify-center items-center mt-10">
+  <div class="w-full flex justify-center items-center mt-5">
     <div class="text-[32px] font-bold fredoka">
       SETTINGS
     </div>

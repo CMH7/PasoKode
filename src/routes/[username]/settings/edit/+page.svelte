@@ -90,12 +90,7 @@
   <!-- header logo -->
   <div class="w-full flex justify-center items-center pt-3 gap-x-3">
     <!-- logo -->
-    <div class="rounded-full w-[42px] aspect-square bg-primary" />
-
-    <!-- title  -->
-    <div class="fredoka font-bold text-paleBlue text-[16px]">
-      PasoKode
-    </div>
+    <div class="bg-pasoKodeBanner bg-[length:150px_75px] w-[150px] h-[75px] flex-shrink-0" />
   </div>
 
   <!-- headings -->
@@ -173,7 +168,7 @@
   </div>
 
   <!-- ctas btn -->
-  <div class="w-full flex flex-col justify-center items-center gap-y-2 mt-20">
+  <div class="w-full flex flex-col justify-center items-center gap-y-2 mt-16">
     <button disabled={updatingData} on:click={updateData}>
       <PasokButton>
         {#if !updatingData}

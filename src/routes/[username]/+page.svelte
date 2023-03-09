@@ -38,12 +38,7 @@
   <div class="w-full flex items-center justify-between pt-3 px-3">
     <div class="w-[128px] flex items-center gap-x-3">
       <!-- logo -->
-      <div class="rounded-full w-[42px] aspect-square bg-primary" />
-  
-      <!-- title  -->
-      <div class="fredoka font-bold text-paleBlue text-[16px]">
-        PasoKode
-      </div>
+      <div class="bg-pasoKodeBanner bg-[length:150px_75px] w-[150px] h-[75px] flex-shrink-0" />
     </div>
 
     <a href="/login">
@@ -57,9 +52,9 @@
     </a>
   </div>
 
-  <div id='pic' class="w-fit flex flex-col items-center">
+  <div id='pic' class="w-fit flex flex-col items-center mt-10">
     <!-- QR CODE -->
-    <div class="w-[282px] aspect-square bg-black shadow-lg">
+    <div class="w-[282px] aspect-square bg-black shadow-lg rounded-lg overflow-hidden">
       <QrCode size={282} value="{data.student.firstName},{data.student.middleName},{data.student.lastName},{data.student.strand}{data.student.year} - {data.student.section}" />
     </div>
 
@@ -74,7 +69,7 @@
     </div>
   </div>
 
-  <div class="w-full flex flex-col items-center mt-20 gap-y-2">
+  <div class="w-full flex flex-col items-center mt-10 gap-y-2">
     <a href="/{$page.params.username}/settings">
       <PasokButton>
         Settings

@@ -11,12 +11,10 @@
   <!-- header -->
   <div class="flex flex-col items-center">
     <!-- Logo -->
-    <div class="rounded-full bg-primary w-[104px] aspect-square" />
+    <div class="bg-pasoKodeLogoNoBg bg-[length:250px_250px] w-[250px] aspect-square" />
   
     <!-- title -->
-    <div class='fredoka font-bold text-paleBlue text-[20px]'>
-      PasoKode
-    </div>
+    <div class="bg-pasoKodeTitle bg-[length:200px_55px] w-[200px] h-[55px]" />
   </div>
 
   <!-- cta -->
