@@ -109,6 +109,13 @@
       register()
     }
   }
+
+  // @ts-ignore
+  const handleInput = (e) => {
+    const input = e.target.value;
+    const filteredInput = input.replace(/[^a-zA-Z]/g, '');
+    e.target.value = filteredInput;
+  }
 </script>
 
 <svelte:head>
@@ -163,7 +170,7 @@
           First Name
         </div>
         
-        <input bind:value={student.firstName} class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
+        <input bind:value={student.firstName} on:input={handleInput} class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
       </div>
 
       <div class="w-[135px] flex flex-col">
@@ -172,7 +179,7 @@
           Middle Name
         </div>
         
-        <input bind:value={student.middleName} class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
+        <input bind:value={student.middleName} on:input={handleInput} class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
       </div>
     </div>
     
@@ -184,7 +191,7 @@
           Last Name
         </div>
         
-        <input bind:value={student.lastName} class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
+        <input bind:value={student.lastName} on:input={handleInput} class="w-full h-[37px] rounded-lg pl-3 lexend text-xs" type='text'>
       </div>
 
       <SelectField bind:value={student.sex} width='135px' data={sex}>
