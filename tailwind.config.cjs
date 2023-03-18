@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "pasoKodeLogo": "url('/favicon.png')",
-        "pasoKodeLogoNoBg": "url('/PasoKode noBG.png')",
+        "pasoKodeLogoNoBg": "url('/PasoKodenoBG.png')",
         "pasoKodeTitle": "url('/pasoKodeTitle.png')",
         "pasoKodeBanner": "url('/pasoKodeBanne2r.png')",
         "pasoLogo": "url('/OIP.png')",
