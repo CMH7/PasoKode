@@ -110,10 +110,13 @@
     }
   }
 
-  // @ts-ignore
+  /**
+   * This code is a function called handleInput that takes in an event (e) as an argument. The function then stores the value of the event target in a variable called input. It then uses a regular expression to filter out any characters that are not letters or whitespace from the input variable and stores it in another variable called filteredInput. Finally, it sets the value of the event target to be equal to the filteredInput variable. This code is useful for ensuring that only letters and whitespace are accepted as valid input.
+   * @param {any} e
+   */
   const handleInput = (e) => {
     const input = e.target.value;
-    const filteredInput = input.replace(/[^a-zA-Z]/g, '');
+    const filteredInput = input.replace(/[^a-zA-Z\s]/g, '');
     e.target.value = filteredInput;
   }
 </script>
