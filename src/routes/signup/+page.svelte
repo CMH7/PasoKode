@@ -8,7 +8,11 @@
   const strands = ['STEM', 'ABM']
   const grade = ['11', '12']
   const sectionsOf11 = ['Orion', 'Leo', 'Morgan', 'Wedgwood']
+  const sectionsOf11ABM = ['Morgan', 'Wedgwood']
+  const sectionsOf11STEM = ['Orion', 'Leo']
   const sectionsOf12 = ['Da Vinci', 'Rembrandt', 'Beethoven', 'Mozart']
+  const sectionsOf12ABM = ['Da Vinci', 'Rembrandt']
+  const sectionsOf12STEM = ['Beethoven', 'Mozart']
 
   let registering = false
   let step = 1
@@ -207,7 +211,7 @@
         </div>
       </SelectField>
       
-      <SelectField bind:value={student.section} width='135px' data={student.year === '' ? [] : student.year === '11' ? sectionsOf11 : sectionsOf12}>
+      <SelectField bind:value={student.section} width='135px' data={student.year === '' ? [] : student.year === '11' && student.strand === 'ABM' ? sectionsOf11ABM : student.year === '12' && student.strand === 'ABM' ? sectionsOf12ABM : student.year === '11' && student.strand === 'STEM' ? sectionsOf11STEM : student.year === '12' && student.strand === 'STEM' ? sectionsOf12STEM : []}>
         <div class="lexend text-[12px]">
           Section
         </div>
