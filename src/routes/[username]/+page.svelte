@@ -42,12 +42,12 @@
     </div>
 
     <a href="/login">
-      <div class="flex items-center gap-x-1">
-        <div class="lexend text-xs">
+      <div class="flex items-center gap-x-1 hover:gap-x-4 transition-all duration-500 ease-in-out group">
+        <div class="fredoka transition-all duration-500 ease-in-out font-semibold text-sm md:text-base lg:text-lg group-hover:text-paleRed">
           Logout
         </div>
   
-        <PasokIcon size={20} path={mdiLogout} />
+        <PasokIcon svgClass='group-hover:fill-paleRed transition-all duration-500 ease-in-out' size={20} path={mdiLogout} />
       </div>
     </a>
   </div>

@@ -7,7 +7,9 @@ module.exports = {
         "pasoKodeLogo": "url('/favicon.png')",
         "pasoKodeLogoNoBg": "url('/PasoKode noBG.png')",
         "pasoKodeTitle": "url('/pasoKodeTitle.png')",
-        "pasoKodeBanner": "url('/PasokodeBanner.png')"
+        "pasoKodeBanner": "url('/pasoKodeBanne2r.png')",
+        "pasoLogo": "url('/OIP.png')",
+        "pasoSchool": "url('/pasoSchool.jpg')"
       },
       colors: {
         'skyBlue': "#53CBFF",

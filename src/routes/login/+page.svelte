@@ -98,7 +98,9 @@
   <!-- header logo -->
   <div class="w-full flex justify-center items-center pt-3 gap-3">
     <!-- logo -->
-    <div class="bg-pasoKodeBanner bg-[length:150px_75px] w-[150px] h-[75px]" />
+    <a href="/">
+      <div class="bg-pasoKodeBanner bg-[length:150px_75px] w-[150px] h-[75px]" />
+    </a>
   </div>
 
   <!-- headings -->

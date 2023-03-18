@@ -43,9 +43,9 @@
     </a>
 
     <a href="/{data.student?.username}">
-      <div class="flex items-center gap-x-1">
+      <div class="flex items-center gap-x-1 hover:gap-x-4 transition-all duration-500 ease-in-out">
         <PasokIcon size={20} path={mdiChevronLeft} />
-        <div class="lexend text-xs">
+        <div class="fredoka font-semibold text-sm md:text-base lg:text-lg">
           Back
         </div>
       </div>

@@ -11,7 +11,7 @@
   <!-- header -->
   <div class="flex flex-col items-center">
     <!-- Logo -->
-    <div class="bg-pasoKodeLogoNoBg bg-[length:250px_250px] w-[250px] aspect-square" />
+    <div class="bg-pasoKodeLogoNoBg bg-contain bg-no-repeat bg-center w-[250px] aspect-square" />
   
     <!-- title -->
     <div class="bg-pasoKodeTitle bg-[length:200px_55px] w-[200px] h-[55px]" />

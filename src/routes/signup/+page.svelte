@@ -135,7 +135,9 @@
   <!-- header logo -->
   <div class="w-full flex justify-center items-center pt-3 gap-x-3">
     <!-- logo -->
-    <div class="bg-pasoKodeBanner bg-[length:150px_75px] w-[150px] h-[75px] flex-shrink-0" />
+    <a href="/">
+      <div class="bg-pasoKodeBanner bg-[length:150px_75px] w-[150px] h-[75px] flex-shrink-0" />
+    </a>
   </div>
 
   <!-- headings -->
