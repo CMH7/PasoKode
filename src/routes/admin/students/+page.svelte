@@ -23,7 +23,7 @@
   </div>
 
   {#each lists as student}
-    <div class='w-[200px] h-fit flex flex-col border-2 border-primary rounded-lg {student.lastName.charAt(student.lastName.length - 1) === ' ' ? 'bg-red-500' : 'bg-white'}'>
+    <div class='w-[200px] h-fit flex flex-col border-2 border-primary rounded-lg {student.lastName.charAt(student.lastName.length - 1) === ' ' ? 'bg-red-500 text-white' : 'bg-white'}'>
       <div class="freokda px-3 text-ellipsis w-full">
         First name: <span class='font-bold'>{student.firstName}</span>
       </div>
