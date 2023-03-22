@@ -50,7 +50,7 @@
   //@ts-ignore
   const handleInput = (e) => {
     const input = e.target.value;
-    const filteredInput = input.replace(/[^a-zA-Z-\s]/g, '');
+    const filteredInput = input.replace(/[^a-zA-ZÑñ-\s]/g, '');
     e.target.value = filteredInput;
   }
 </script>
