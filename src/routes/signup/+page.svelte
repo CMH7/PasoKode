@@ -73,6 +73,19 @@
       registering = false
       return
     }
+
+    if ( student.lastName.charAt(student.lastName.length - 1) === ' ' ) {
+      student.lastName = student.lastName.substring(0, student.lastName.length - 1)
+    }
+    if ( student.middleName.charAt(student.middleName.length - 1) === ' ' ) {
+      student.middleName = student.middleName.substring(0, student.middleName.length - 1)
+    }
+    if ( student.firstName.charAt(student.firstName.length - 1) === ' ' ) {
+      student.firstName = student.firstName.substring(0, student.firstName.length - 1)
+    }
+    if ( student.username.charAt(student.username.length - 1) === ' ' ) {
+      student.username = student.username.substring(0, student.username.length - 1)
+    }
     
     let form = document.getElementById('formRegister')
     // @ts-ignore
